@@ -1,0 +1,81 @@
+-- Created by Vertabelo (http://vertabelo.com)
+-- Last modification date: 2021-11-24 02:20:00.685
+
+-- tables
+-- Table: jIname
+CREATE TABLE jIname (
+    I_Id int NOT NULL,
+    Iname text NOT NULL,
+    CONSTRAINT jIname_pk PRIMARY KEY (I_Id)
+);
+
+-- Table: jcash
+CREATE TABLE jcash (
+    Cash_Id int NOT NULL,
+    Cash text NOT NULL,
+    CONSTRAINT jcash_pk PRIMARY KEY (Cash_Id)
+);
+
+-- Table: jcategory
+CREATE TABLE jcategory (
+    Cat_Id int NOT NULL,
+    Category text NOT NULL,
+    CONSTRAINT jcategory_pk PRIMARY KEY (Cat_Id)
+);
+
+-- Table: jcity
+CREATE TABLE jcity (
+    Cid int NOT NULL,
+    City text NOT NULL,
+    CONSTRAINT jcity_pk PRIMARY KEY (Cid)
+);
+
+-- Table: jclient
+CREATE TABLE jclient (
+    CId int NOT NULL,
+    Client text NOT NULL,
+    CONSTRAINT jclient_pk PRIMARY KEY (CId)
+);
+
+-- Table: jdata
+CREATE TABLE jdata (
+    Iname text NOT NULL,
+    Description text NOT NULL,
+    Price int NOT NULL,
+    Date date NOT NULL,
+    Category int NOT NULL,
+    Client int NOT NULL,
+    City int NOT NULL,
+    Cash int NOT NULL,
+    CId int NOT NULL,
+    Cat_Id int NOT NULL,
+    Cid int NOT NULL,
+    I_Id int NOT NULL,
+    Cash_Id int NOT NULL,
+    Id int NOT NULL,
+    CONSTRAINT jdata_pk PRIMARY KEY (Id)
+);
+
+-- foreign keys
+-- Reference: jdata_jIname (table: jdata)
+ALTER TABLE jdata ADD CONSTRAINT jdata_jIname FOREIGN KEY jdata_jIname (I_Id)
+    REFERENCES jIname (I_Id);
+
+-- Reference: jdata_jcash (table: jdata)
+ALTER TABLE jdata ADD CONSTRAINT jdata_jcash FOREIGN KEY jdata_jcash (Cash_Id)
+    REFERENCES jcash (Cash_Id);
+
+-- Reference: jdata_jcategory (table: jdata)
+ALTER TABLE jdata ADD CONSTRAINT jdata_jcategory FOREIGN KEY jdata_jcategory (Cat_Id)
+    REFERENCES jcategory (Cat_Id);
+
+-- Reference: jdata_jcity (table: jdata)
+ALTER TABLE jdata ADD CONSTRAINT jdata_jcity FOREIGN KEY jdata_jcity (Cid)
+    REFERENCES jcity (Cid);
+
+-- Reference: jdata_jclient (table: jdata)
+ALTER TABLE jdata ADD CONSTRAINT jdata_jclient FOREIGN KEY jdata_jclient (CId)
+    REFERENCES jclient (CId);
+
+-- End of file.
+
